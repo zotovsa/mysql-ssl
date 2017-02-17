@@ -6,6 +6,7 @@ COPY server.crt /etc/mysql/server.crt
 COPY rootCA.crt /etc/mysql/rootCA.crt
 
 RUN chmod -R a+rwX /custom-entrypoint.sh
+RUN chown root:root /custom-entrypoint.sh
 
 ENTRYPOINT ["/custom-entrypoint.sh"]
 CMD ["mysqld"]
