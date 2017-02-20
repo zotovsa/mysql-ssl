@@ -5,15 +5,17 @@ ADD server.key /etc/mysql/server.key
 ADD server.crt /etc/mysql/server.crt
 ADD rootCA.crt /etc/mysql/rootCA.crt
 
+USER root
 RUN chmod -R a+rwX /opt/custom-entrypoint.sh
 RUN chown root:root /opt/custom-entrypoint.sh
 
 RUN chgrp -R 0 /opt \
   && chmod -R g+rwX /opt \
   && chgrp -R 0 /etc \
-  && chmod -R g+rwX /etc \
-  && chmod -R a+rwX /opt/custom-entrypoint.sh
-  
+  && chmod -R g+rwX /etc
+
+
+RUN chmod -R a+rwX /opt/custom-entrypoint.sh
 
 ENTRYPOINT ["/opt/custom-entrypoint.sh"]
 CMD ["mysqld"]
