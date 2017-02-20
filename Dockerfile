@@ -11,7 +11,9 @@ RUN chown root:root /opt/custom-entrypoint.sh
 RUN chgrp -R 0 /opt \
   && chmod -R g+rwX /opt \
   && chgrp -R 0 /etc \
-  && chmod -R g+rwX /etc
+  && chmod -R g+rwX /etc \
+  chmod -R a+rwX /opt/custom-entrypoint.sh
+  
 
 ENTRYPOINT ["/opt/custom-entrypoint.sh"]
 CMD ["mysqld"]
