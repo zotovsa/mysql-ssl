@@ -12,7 +12,7 @@ RUN chgrp -R 0 /opt \
   && chmod -R g+rwX /opt \
   && chgrp -R 0 /etc \
   && chmod -R g+rwX /etc \
-  chmod -R a+rwX /opt/custom-entrypoint.sh
+  && chmod -R a+rwX /opt/custom-entrypoint.sh
   
 
 ENTRYPOINT ["/opt/custom-entrypoint.sh"]
