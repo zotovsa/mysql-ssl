@@ -15,7 +15,8 @@ RUN chgrp -R 0 /opt \
   && chmod -R g+rwX /etc
 
 
-RUN chmod -R a+rwX /opt/custom-entrypoint.sh
+RUN chmod 777 /opt/custom-entrypoint.sh
+RUN ls -la /opt
 
 ENTRYPOINT ["/opt/custom-entrypoint.sh"]
 CMD ["mysqld"]
